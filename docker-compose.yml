@@ -4,7 +4,7 @@ services:
   backend:
     image: your-golang-image
     ports:
-      - "5000:5000"
+      - "8060:8060"
 
   frontend:
     image: your-nuxt-image
