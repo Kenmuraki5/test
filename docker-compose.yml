@@ -2,19 +2,23 @@ version: '3'
 
 services:
   backend:
-    image: your-golang-image
+    image: go
+    build: .
     ports:
       - "8060:8060"
 
-  frontend:
-    image: your-nuxt-image
-    ports:
-      - "3000:3000"
-
   nginx:
-    image: your-nginx-image
+    image: nginx
+    build: ./nginx
     ports:
       - "80:80"
     depends_on:
       - backend
-      - frontend
+      - nuxt
+  nuxt:
+    image: nuxt
+    build: ./nuxt-project
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
